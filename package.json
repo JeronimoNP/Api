@@ -1,0 +1,22 @@
+{
+  "name": "desafio-back-end",
+  "version": "1.0.0",
+  "description": "Projeto Back-End desafiado para mim fazer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeronimoNP/Desafio-Back-End.git"
+  },
+  "author": "Jerônimo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeronimoNP/Desafio-Back-End/issues"
+  },
+  "homepage": "https://github.com/JeronimoNP/Desafio-Back-End#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
