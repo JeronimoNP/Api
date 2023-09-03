@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-container h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Cadastro</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome">
+            </div>
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="text" id="email" name="email" placeholder="Digite seu email">
+            </div>
+            <div class="form-group">
+                <label for="password">senha</label>
+                <input type="password" id="password" name="password" placeholder="Crie uma senha">
+            </div>
+            <div class="form-group">
+                <button type="submit" id="cadastrar">Criar contar</button>
+            </div>
+            <div class="form-group">
+                <button type="button" id="logar">Ja tenho conta</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+        const redirecionarlogin = document.getElementById('logar');
+        redirecionarlogin.addEventListener('click', () => {
+            window.location.href = 'Login.html'
+        });
+
+        const logar = document.getElementById('cadastrar');
+
+        logar.addEventListener('click', () => {
+            let email = document.getElementById('email');
+            let senha = document.getElementById('password');
+            let nome = document.getElementById('name');
+            let email1 = email.value;
+            let senha1 = senha.value;
+            let nome1 = nome.value;
+
+            let dados = {
+                name: nome1,
+                email: email1,
+                senha: senha1
+            };
+            const host = 'http://localhost:3000/cadastro'
+            fetch(host, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Dados enviados com sucesso', result);
+            })
+            .catch(erro => {
+                console.error('Erro ao enviar dados:', error);
+            });
+        });
+    </script>
+
+</body>
+</html>
