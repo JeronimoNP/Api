@@ -7,7 +7,8 @@ Esse desafio será criar uma api para que seja possivel fazer criação de login
 
 
 
-- Estou utilizando a biblioteca Sequelize js para facilitar no gerenciamento do banco de dados SQL
+- Estou utilizando a ORM Sequelize js para facilitar no gerenciamento do banco de dados SQL
 ### npm intall --save sequelize
 
-- Comando npm run devStart para iniciar serve app.js
+- Comando "npm run Start" para iniciar serve app.js
+
