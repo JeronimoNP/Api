@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt');
 const { error } = require('qrcode-terminal');
 //importanto criador de token
 const jwt = require('jsonwebtoken');
+const { where } = require('sequelize');
 
 
 const portahttp = 3000;
@@ -160,7 +161,28 @@ app.delete('/deletar', async(req, res) => {
 });
 
 app.post('/produto', async (req, res) =>{
-    
+    const dados = await logintoken(req.body.token);
+    const id = dados.id;
+
+    try{
+    const local = await User.findOne({where: {id}})
+    if(!local){
+        return res.status(401).json({
+            Erro: true,
+            info: "token invalido"
+        });
+    }
+
+    const dados2 = User.query("SELECT * FROM * WHERE id LIKE ?", id)
+    console.log(dados2);
+
+    } catch {
+        return res.status(404).json({
+            Erro: true,
+            info: "Erro o servidor"
+        });
+    }
+
 });
 
 try{
